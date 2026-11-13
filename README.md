@@ -1,6 +1,10 @@
 # DHL Packstation Availability für Home Assistant
 
+![Eigenständiges Symbol der Integration](custom_components/dhl_packstation_availability/brand/icon.png)
+
 Diese inoffizielle HACS-Integration zeigt freie Fächer einer DHL-Packstation nach Größe: S, M, L, XL und gesamt. Sie liest den DHL-Postfinder-Endpunkt ohne Anmeldung oder API-Schlüssel. Jede Station wird alle 15 Minuten abgefragt.
+
+In HACS zeigt die Repository-Seite diese Beschreibung und die folgenden Installationsschritte. In Home Assistant erklärt der Einrichtungsdialog Funktion, Intervall und benötigte ID. Das eigenständige Symbol erscheint in Home Assistant ab Version 2026.3. Die neue Marketplace-Oberfläche ab Home Assistant 2026.11 unterstützt ebenfalls lokale Integrationssymbole. Ältere HACS-Katalogansichten können weiterhin ein Platzhaltersymbol zeigen.
 
 ## Voraussetzungen
 
@@ -48,3 +52,5 @@ Für Benachrichtigungen kannst du in der Home-Assistant-Oberfläche einen **Nume
 Der verwendete Postfinder-Endpunkt ist keine dokumentierte öffentliche API. DHL kann Felder oder Zugriff jederzeit ändern. Nicht jede Packstation liefert Live-Fachzahlen. Werte können gegenüber der tatsächlichen Belegung verzögert sein. Bei HTTP-Fehlern oder fehlenden Daten werden Sensoren nicht als `0` ausgegeben. Diese Integration stammt nicht von DHL und ermöglicht weder Paketverfolgung noch Fachreservierung oder Öffnen einer Packstation.
 
 Code: [MIT-Lizenz](LICENSE). DHL-Daten und Marken bleiben Eigentum ihrer jeweiligen Inhaber.
+
+Das Symbol zeigt eine generische Fächeranlage ohne DHL- oder Home-Assistant-Logo. Es ist Teil dieses Repositories und kein offizielles Markenzeichen von DHL.

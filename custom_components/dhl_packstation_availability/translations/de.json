@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "DHL Packstation hinzufügen",
-        "description": "Postfinder-ID aus der Stations-URL eingeben, zum Beispiel 1-23611202.",
+        "description": "Zeigt freie Packstation-Fächer nach Größe (S, M, L, XL) und gesamt. Aktualisierung alle 15 Minuten. Postfinder-ID der Station eingeben, zum Beispiel 1-23611202. Diese inoffizielle Integration liest einen undokumentierten DHL-Endpunkt ohne Konto oder API-Schlüssel.",
         "data": {"station_id": "Postfinder-ID"}
       }
     },

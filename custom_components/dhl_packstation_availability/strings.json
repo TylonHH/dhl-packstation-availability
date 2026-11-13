@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Add DHL Packstation",
-        "description": "Enter the Postfinder ID from the station URL, for example 1-23611202.",
+        "description": "Shows available locker compartments by size (S, M, L, XL) and total. Updates every 15 minutes. Enter the station's Postfinder ID, for example 1-23611202. This unofficial integration reads DHL's undocumented endpoint without an account or API key.",
         "data": {"station_id": "Postfinder ID"}
       }
     },
