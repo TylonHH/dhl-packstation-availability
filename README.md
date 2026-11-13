@@ -56,3 +56,7 @@ Der verwendete Postfinder-Endpunkt ist keine dokumentierte öffentliche API. DHL
 Code: [MIT-Lizenz](LICENSE). DHL-Daten und Marken bleiben Eigentum ihrer jeweiligen Inhaber.
 
 Das Symbol zeigt eine generische Fächeranlage ohne DHL- oder Home-Assistant-Logo. Es ist Teil dieses Repositories und kein offizielles Markenzeichen von DHL.
+
+## Versionen und Beiträge
+
+[Versionsverlauf](CHANGELOG.md) und [GitHub-Releases](https://github.com/TylonHH/dhl-packstation-availability/releases) erklären jede veröffentlichte Änderung. Für künftige Änderungen erstellt Release Please automatisch einen Release-Pull-Request mit neuer Version und Changelog. Nach Prüfung merged nur `@TylonHH` diesen Pull Request; dann erstellt die Automatisierung den Tag und das Release. Beiträge sind willkommen. Regeln für Pull Requests stehen in [CONTRIBUTING.md](CONTRIBUTING.md).

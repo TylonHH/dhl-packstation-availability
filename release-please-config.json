@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "include-v-in-tag": true,
+  "bump-minor-pre-major": true,
+  "changelog-sections": [
+    {"type": "feat", "section": "Neue Funktionen"},
+    {"type": "fix", "section": "Fehlerbehebungen"},
+    {"type": "perf", "section": "Verbesserungen"},
+    {"type": "docs", "section": "Dokumentation"}
+  ],
+  "packages": {
+    ".": {
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "custom_components/dhl_packstation_availability/manifest.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    }
+  }
+}
