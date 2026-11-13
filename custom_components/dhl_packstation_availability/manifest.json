@@ -1,6 +1,7 @@
 {
   "domain": "dhl_packstation_availability",
   "name": "DHL Packstation Availability",
+  "categories": ["local_services"],
   "codeowners": ["@TylonHH"],
   "config_flow": true,
   "documentation": "https://github.com/TylonHH/dhl-packstation-availability",
