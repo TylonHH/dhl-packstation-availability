@@ -4,6 +4,10 @@
 
 Diese inoffizielle HACS-Integration zeigt freie Fächer einer DHL-Packstation nach Größe: S, M, L, XL und gesamt. Sie liest den DHL-Postfinder-Endpunkt ohne Anmeldung oder API-Schlüssel. Jede Station wird alle 15 Minuten abgefragt.
 
+Inspiriert von [flotomation](https://www.instagram.com/flotomation/) und [diesem Instagram-Reel](https://www.instagram.com/reel/DfpWwzBOrSv/).
+
+[In HACS oder Marketplace öffnen](https://my.home-assistant.io/redirect/hacs_repository/?owner=TylonHH&repository=dhl-packstation-availability&category=integration). Bis zur Aufnahme in den Suchkatalog lässt sich das Repository über diesen Link als benutzerdefinierte Integration hinzufügen.
+
 In HACS zeigt die Repository-Seite diese Beschreibung und die folgenden Installationsschritte. In Home Assistant erklärt der Einrichtungsdialog Funktion, Intervall und benötigte Angaben. Das eigenständige Symbol erscheint in Home Assistant ab Version 2026.3. Die neue Marketplace-Oberfläche ab Home Assistant 2026.11 unterstützt ebenfalls lokale Integrationssymbole. Ältere HACS-Katalogansichten können weiterhin ein Platzhaltersymbol zeigen.
 
 ## Voraussetzungen
