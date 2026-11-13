@@ -1,0 +1,22 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "DHL Packstation hinzufügen",
+        "description": "Postfinder-ID aus der Stations-URL eingeben, zum Beispiel 1-23611202.",
+        "data": {"station_id": "Postfinder-ID"}
+      }
+    },
+    "error": {"cannot_connect": "Live-Fachdaten konnten nicht gelesen werden. ID prüfen und erneut versuchen."},
+    "abort": {"already_configured": "Diese Packstation ist bereits eingerichtet."}
+  },
+  "entity": {
+    "sensor": {
+      "free_s": {"name": "Freie Fächer S"},
+      "free_m": {"name": "Freie Fächer M"},
+      "free_l": {"name": "Freie Fächer L"},
+      "free_xl": {"name": "Freie Fächer XL"},
+      "free_total": {"name": "Freie Fächer gesamt"}
+    }
+  }
+}

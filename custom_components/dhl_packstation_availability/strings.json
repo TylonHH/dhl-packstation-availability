@@ -1,0 +1,22 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add DHL Packstation",
+        "description": "Enter the Postfinder ID from the station URL, for example 1-23611202.",
+        "data": {"station_id": "Postfinder ID"}
+      }
+    },
+    "error": {"cannot_connect": "Could not read live compartment data. Check the ID and try again."},
+    "abort": {"already_configured": "This Packstation is already configured."}
+  },
+  "entity": {
+    "sensor": {
+      "free_s": {"name": "Free compartments S"},
+      "free_m": {"name": "Free compartments M"},
+      "free_l": {"name": "Free compartments L"},
+      "free_xl": {"name": "Free compartments XL"},
+      "free_total": {"name": "Free compartments total"}
+    }
+  }
+}
