@@ -3,11 +3,11 @@
     "step": {
       "user": {
         "title": "DHL Packstation hinzufügen",
-        "description": "Zeigt freie Packstation-Fächer nach Größe (S, M, L, XL) und gesamt. Aktualisierung alle 15 Minuten. Postfinder-ID der Station eingeben, zum Beispiel 1-23611202. Diese inoffizielle Integration liest einen undokumentierten DHL-Endpunkt ohne Konto oder API-Schlüssel.",
-        "data": {"station_id": "Postfinder-ID"}
+        "description": "Zeigt freie Packstation-Fächer nach Größe (S, M, L, XL) und gesamt. Aktualisierung alle 15 Minuten. Fünfstellige Postleitzahl und dreistellige Packstation-Nummer eingeben. Für weitere Stationen die Integration erneut hinzufügen. Führende Nullen in Postleitzahlen werden unterstützt.",
+        "data": {"postal_code": "Postleitzahl", "station_number": "Packstation-Nummer"}
       }
     },
-    "error": {"cannot_connect": "Live-Fachdaten konnten nicht gelesen werden. ID prüfen und erneut versuchen."},
+    "error": {"cannot_connect": "Live-Fachdaten konnten nicht gelesen werden. Postleitzahl und Packstation-Nummer prüfen.", "wrong_station": "DHL meldet eine andere Postleitzahl oder Packstation-Nummer."},
     "abort": {"already_configured": "Diese Packstation ist bereits eingerichtet."}
   },
   "entity": {

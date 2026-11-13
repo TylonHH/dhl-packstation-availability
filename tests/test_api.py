@@ -18,10 +18,21 @@ for name in ("const", "api"):
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
 
-from packstation_test.api import PackstationError, parse_station  # noqa: E402
+from packstation_test.api import PackstationError, build_station_id, parse_station  # noqa: E402
 
 
 class ParseStationTest(unittest.TestCase):
+    def test_station_ids_are_independent_and_postal_zero_is_removed(self):
+        self.assertEqual(build_station_id("23611", "202"), "1-23611202")
+        self.assertEqual(build_station_id("01067", "103"), "1-1067103")
+        self.assertEqual(build_station_id("01067", "240"), "1-1067240")
+        self.assertNotEqual(build_station_id("01067", "103"), build_station_id("01067", "240"))
+
+    def test_invalid_postal_code_or_station_number(self):
+        for postal_code, number in (("1067", "103"), ("01067", "10"), ("01A67", "103")):
+            with self.subTest(postal_code=postal_code, number=number), self.assertRaises(ValueError):
+                build_station_id(postal_code, number)
+
     def test_zero_and_missing_are_distinct(self):
         station = parse_station({
             "primaryKeyPF": "1-23611202", "locationType": "PACKSTATION",

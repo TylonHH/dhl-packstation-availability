@@ -3,11 +3,11 @@
     "step": {
       "user": {
         "title": "Add DHL Packstation",
-        "description": "Shows available locker compartments by size (S, M, L, XL) and total. Updates every 15 minutes. Enter the station's Postfinder ID, for example 1-23611202. This unofficial integration reads DHL's undocumented endpoint without an account or API key.",
-        "data": {"station_id": "Postfinder ID"}
+        "description": "Shows available locker compartments by size (S, M, L, XL) and total. Updates every 15 minutes. Enter the station's five-digit postal code and three-digit Packstation number. Add the integration again for more stations. Leading zeros in postal codes are supported.",
+        "data": {"postal_code": "Postal code", "station_number": "Packstation number"}
       }
     },
-    "error": {"cannot_connect": "Could not read live compartment data. Check the ID and try again."},
+    "error": {"cannot_connect": "Could not read live compartment data. Check the postal code and Packstation number.", "wrong_station": "DHL returned a different postal code or Packstation number."},
     "abort": {"already_configured": "This Packstation is already configured."}
   },
   "entity": {

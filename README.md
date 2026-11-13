@@ -4,7 +4,7 @@
 
 Diese inoffizielle HACS-Integration zeigt freie Fächer einer DHL-Packstation nach Größe: S, M, L, XL und gesamt. Sie liest den DHL-Postfinder-Endpunkt ohne Anmeldung oder API-Schlüssel. Jede Station wird alle 15 Minuten abgefragt.
 
-In HACS zeigt die Repository-Seite diese Beschreibung und die folgenden Installationsschritte. In Home Assistant erklärt der Einrichtungsdialog Funktion, Intervall und benötigte ID. Das eigenständige Symbol erscheint in Home Assistant ab Version 2026.3. Die neue Marketplace-Oberfläche ab Home Assistant 2026.11 unterstützt ebenfalls lokale Integrationssymbole. Ältere HACS-Katalogansichten können weiterhin ein Platzhaltersymbol zeigen.
+In HACS zeigt die Repository-Seite diese Beschreibung und die folgenden Installationsschritte. In Home Assistant erklärt der Einrichtungsdialog Funktion, Intervall und benötigte Angaben. Das eigenständige Symbol erscheint in Home Assistant ab Version 2026.3. Die neue Marketplace-Oberfläche ab Home Assistant 2026.11 unterstützt ebenfalls lokale Integrationssymbole. Ältere HACS-Katalogansichten können weiterhin ein Platzhaltersymbol zeigen.
 
 ## Voraussetzungen
 
@@ -13,9 +13,11 @@ In HACS zeigt die Repository-Seite diese Beschreibung und die folgenden Installa
 - Eine Packstation, für die DHL im Postfinder `liveStatus` mit Fachzahlen liefert
 - Für Installation über HACS: [HACS](https://www.hacs.xyz/docs/use/)
 
-## Postfinder-ID finden
+## Postleitzahl und Packstation-Nummer finden
 
-Öffne den [DHL Standortfinder](https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html), wähle eine Packstation und suche in ihrer Detail- oder Netzwerkadresse nach `locationByPrimaryKeyPF/`. Der Teil dahinter ist die ID. Beispiel: Bei `.../locationByPrimaryKeyPF/1-23611202` ist die ID `1-23611202`. Du kannst die URL im Browser öffnen und prüfen, ob `liveStatus` die Werte `freeCompartmentsS`, `freeCompartmentsM`, `freeCompartmentsL` oder `freeCompartmentsXl` enthält.
+Öffne den [DHL Standortfinder](https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html) und wähle deine Packstation. Benötigt werden nur ihre fünfstellige Postleitzahl und ihre dreistellige Packstation-Nummer. Die persönliche DHL-Postnummer ist **nicht** gemeint.
+
+Die Integration bildet daraus selbst den DHL-Endpunkt. Beispiel: Postleitzahl `23611` und Packstation `202` ergeben die Kennung `1-23611202`. Bei einer führenden Null wird nur die interne Kennung gekürzt: `01067` und Packstation `103` ergeben `1-1067103`. Im Einrichtungsdialog und bei der Prüfung der DHL-Antwort bleibt die Postleitzahl `01067` erhalten.
 
 ## Installation
 
@@ -32,7 +34,7 @@ Ordner `custom_components/dhl_packstation_availability` nach `<config>/custom_co
 
 ## Einrichten
 
-In **Einstellungen → Geräte & Dienste → Integration hinzufügen** nach **DHL Packstation Availability** suchen. Postfinder-ID eingeben. Für weitere Stationen die Integration erneut hinzufügen. Gleiche ID kann nur einmal eingerichtet werden.
+In **Einstellungen → Geräte & Dienste → Integration hinzufügen** nach **DHL Packstation Availability** suchen. Postleitzahl und Packstation-Nummer eingeben. Für jede weitere Station die Integration erneut hinzufügen. Jede Station hat einen eigenen Endpunkt und fünf eigene Sensoren; dieselbe Station kann nur einmal eingerichtet werden. Bereits mit einer Postfinder-ID eingerichtete Stationen funktionieren nach dem Update weiter.
 
 ## Auslesen
 

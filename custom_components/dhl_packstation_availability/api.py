@@ -8,11 +8,22 @@ from aiohttp import ClientError
 from .const import BASE_URL
 
 KEY_PATTERN = re.compile(r"^[0-9]+-[0-9]+$")
+POSTAL_CODE_PATTERN = re.compile(r"^[0-9]{5}$")
+STATION_NUMBER_PATTERN = re.compile(r"^[0-9]{3}$")
 SIZES = {"s": "freeCompartmentsS", "m": "freeCompartmentsM", "l": "freeCompartmentsL", "xl": "freeCompartmentsXl"}
 
 
 class PackstationError(Exception):
     """DHL response cannot be used."""
+
+
+def build_station_id(postal_code: str, station_number: str) -> str:
+    """Build DHL's key, dropping leading zeros only from the postal code."""
+    if not POSTAL_CODE_PATTERN.fullmatch(postal_code):
+        raise ValueError("Postal code must contain five digits")
+    if not STATION_NUMBER_PATTERN.fullmatch(station_number):
+        raise ValueError("Packstation number must contain three digits")
+    return f"1-{int(postal_code)}{station_number}"
 
 
 def parse_station(payload: object, key: str) -> dict:
@@ -37,6 +48,8 @@ def parse_station(payload: object, key: str) -> dict:
         updated = None
     return {
         "name": payload.get("locationName") or payload.get("keyWord") or key,
+        "postal_code": payload.get("zipCode"),
+        "station_number": payload.get("primaryKeyZipRegion"),
         "address": ", ".join(filter(None, [" ".join(filter(None, [payload.get("street"), payload.get("houseNo")])), " ".join(filter(None, [payload.get("zipCode"), payload.get("city")]))])),
         "counts": counts,
         "updated": updated,
