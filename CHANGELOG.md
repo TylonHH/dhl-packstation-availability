@@ -2,6 +2,13 @@
 
 Änderungen erscheinen hier nach Version. Die GitHub-Releases enthalten dieselben Hinweise.
 
+## [0.2.1](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.2.0...v0.2.1) (2026-11-14)
+
+
+### Fehlerbehebungen
+
+* prepare Marketplace catalog validation ([#1](https://github.com/TylonHH/dhl-packstation-availability/issues/1)) ([d3eaffa](https://github.com/TylonHH/dhl-packstation-availability/commit/d3eaffafc3aae48653bf7d51a66747569f3d981a))
+
 ## [0.2.0](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.1.1...v0.2.0) (2026-11-13)
 
 ### Neue Funktionen
