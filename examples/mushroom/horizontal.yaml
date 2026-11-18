@@ -1,0 +1,87 @@
+# Mushroom v5.2.3: Beispiel-Entitäten vor dem Einfügen ersetzen (siehe README.md).
+# Als EINE manuelle Karte einfügen. Keine weiteren Helfer nötig.
+type: vertical-stack
+cards:
+  - type: custom:mushroom-title-card
+    title: DHL Packstation
+    subtitle: Meine Packstation
+  - type: custom:mushroom-template-card
+    entity: sensor.meine_packstation_freie_facher_gesamt
+    icon: mdi:package-variant-closed
+    color: amber
+    primary: >-
+      {% if has_value(entity) %}
+        {{ states(entity) }} freie Fächer
+      {% else %}
+        Keine Live-Daten
+      {% endif %}
+    secondary: "{{ state_attr(entity, 'address') or 'Adresse unbekannt' }}"
+    multiline_secondary: true
+    tap_action:
+      action: more-info
+  - type: custom:mushroom-chips-card
+    alignment: center
+    chips:
+      - type: template
+        entity: sensor.meine_packstation_freie_facher_s
+        icon: mdi:package-variant
+        icon_color: >-
+          {% if not has_value(entity) %}grey
+          {% elif states(entity) | int(0) == 0 %}red
+          {% else %}green{% endif %}
+        content: "S: {{ states(entity) if has_value(entity) else '—' }}"
+        tap_action:
+          action: more-info
+      - type: template
+        entity: sensor.meine_packstation_freie_facher_m
+        icon: mdi:package-variant
+        icon_color: >-
+          {% if not has_value(entity) %}grey
+          {% elif states(entity) | int(0) == 0 %}red
+          {% else %}green{% endif %}
+        content: "M: {{ states(entity) if has_value(entity) else '—' }}"
+        tap_action:
+          action: more-info
+      - type: template
+        entity: sensor.meine_packstation_freie_facher_l
+        icon: mdi:package-variant
+        icon_color: >-
+          {% if not has_value(entity) %}grey
+          {% elif states(entity) | int(0) == 0 %}red
+          {% else %}green{% endif %}
+        content: "L: {{ states(entity) if has_value(entity) else '—' }}"
+        tap_action:
+          action: more-info
+      - type: template
+        entity: sensor.meine_packstation_freie_facher_xl
+        icon: mdi:package-variant
+        icon_color: >-
+          {% if not has_value(entity) %}grey
+          {% elif states(entity) | int(0) == 0 %}red
+          {% else %}green{% endif %}
+        content: "XL: {{ states(entity) if has_value(entity) else '—' }}"
+        tap_action:
+          action: more-info
+  - type: custom:mushroom-template-card
+    entity: sensor.meine_packstation_freie_facher_gesamt
+    icon: mdi:clock-outline
+    primary: DHL-Datenstand
+    secondary: >-
+      {% set t = as_timestamp(state_attr(entity, 'source_timestamp'), none) %}
+      {% if t is none %}
+        Zeitstempel fehlt
+      {% elif t > as_timestamp(now()) + 300 %}
+        Zeitstempel liegt in der Zukunft
+      {% else %}
+        {{ t | timestamp_custom('%d.%m.%Y · %H:%M') }}
+        · vor {{ ([0, (as_timestamp(now()) - t) / 60] | max) | int }} min
+        {% if as_timestamp(now()) - t > 1800 %}· veraltet{% endif %}
+      {% endif %}
+    color: >-
+      {% set t = as_timestamp(state_attr(entity, 'source_timestamp'), none) %}
+      {% if t is none %}disabled
+      {% elif t > as_timestamp(now()) + 300 or as_timestamp(now()) - t > 1800 %}amber
+      {% else %}blue{% endif %}
+    multiline_secondary: true
+    tap_action:
+      action: more-info
