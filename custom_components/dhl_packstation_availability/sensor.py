@@ -31,7 +31,7 @@ class PackstationSensor(CoordinatorEntity, SensorEntity):
             name=f"DHL Packstation {coordinator.data['name']}",
             manufacturer="DHL",
             model="Packstation",
-            configuration_url="https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html",
+            configuration_url=f"https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html?primaryKeyPF={station_id}",
         )
 
     @property

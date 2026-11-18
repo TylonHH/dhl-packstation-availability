@@ -5,6 +5,7 @@ import sys
 import types
 import unittest
 from unittest.mock import patch
+from urllib.parse import parse_qs, urlsplit
 
 from test_api import ROOT
 
@@ -60,7 +61,16 @@ class SensorTest(unittest.TestCase):
                 self.assertTrue(sensor.available)
                 self.assertEqual(sensor._attr_unique_id, f"1-23611202_{size}")
                 self.assertEqual(sensor._attr_device_info["configuration_url"],
-                                 "https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html")
+                                 "https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html?primaryKeyPF=1-23611202")
+
+    def test_each_station_has_its_own_public_link(self):
+        for station_id in ("1-23611202", "1-1067103", "1-1067240"):
+            with self.subTest(station_id=station_id):
+                sensor = sensor_module.PackstationSensor(self.coordinator, station_id, "total")
+                url = urlsplit(sensor._attr_device_info["configuration_url"])
+                self.assertEqual((url.scheme, url.netloc, url.path),
+                                 ("https", "www.dhl.de", "/de/privatkunden/dhl-standorte-finden.html"))
+                self.assertEqual(parse_qs(url.query), {"primaryKeyPF": [station_id]})
 
     def test_missing_counts_and_update_failures_remain_unavailable(self):
         self.coordinator.data["counts"]["s"] = None

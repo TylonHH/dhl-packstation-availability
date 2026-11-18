@@ -46,7 +46,7 @@ Pro Station entstehen fünf Sensoren: **Freie Fächer S**, **M**, **L**, **XL** 
 
 Die Fachzahlen sind numerische Messwerte (`state_class: measurement`) mit einer empfohlenen Anzeige ohne Nachkommastellen. Home Assistant kann sie in der Detailansicht als Verlauf darstellen und Minimum, Maximum und Mittelwert als Statistik aufzeichnen, sofern Recorder und Statistikaufzeichnung aktiv sind. Neue Langzeitstatistiken entstehen ab der Erfassung mit dieser Sensorklasse; sie werden nicht rückwirkend aus alten Zustandsdaten ergänzt.
 
-**Anwendung öffnen** auf der Geräteseite führt zum [DHL-Standortfinder](https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html).
+**Anwendung öffnen** auf der Geräteseite führt direkt zur eingerichteten Station im öffentlichen DHL-Standortfinder. Beispiel: [Packstation 202 in 23611](https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html?primaryKeyPF=1-23611202). Der Link enthält die vollständige Stationskennung im Parameter `primaryKeyPF`; es wird keine JSON-Antwort geöffnet.
 
 Beispiel einer Template-Bedingung für mindestens ein XL-Fach (Entitäts-ID anpassen):
 
