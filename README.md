@@ -44,6 +44,10 @@ In **Einstellungen → Geräte & Dienste → Integration hinzufügen** nach **DH
 
 Pro Station entstehen fünf Sensoren: **Freie Fächer S**, **M**, **L**, **XL** und **gesamt**. Entitäts-IDs legt Home Assistant anhand des Stationsnamens fest. Die genaue ID steht unter **Einstellungen → Geräte & Dienste → Entitäten**. Sensorattribute `source_timestamp` und `address` zeigen Zeitpunkt der DHL-Quelldaten und Standortadresse. `0` bedeutet kein freies Fach. Fehlt eine Größe in der DHL-Antwort, ist ihr Sensor `unavailable`; Gesamt ist dann ebenfalls `unavailable`.
 
+Die Fachzahlen sind numerische Messwerte (`state_class: measurement`) mit einer empfohlenen Anzeige ohne Nachkommastellen. Home Assistant kann sie in der Detailansicht als Verlauf darstellen und Minimum, Maximum und Mittelwert als Statistik aufzeichnen, sofern Recorder und Statistikaufzeichnung aktiv sind. Neue Langzeitstatistiken entstehen ab der Erfassung mit dieser Sensorklasse; sie werden nicht rückwirkend aus alten Zustandsdaten ergänzt.
+
+**Anwendung öffnen** auf der Geräteseite führt zum [DHL-Standortfinder](https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html).
+
 Beispiel einer Template-Bedingung für mindestens ein XL-Fach (Entitäts-ID anpassen):
 
 ```yaml
@@ -79,3 +83,7 @@ Das Symbol zeigt eine generische Fächeranlage ohne DHL- oder Home-Assistant-Log
 ## Versionen und Beiträge
 
 [Versionsverlauf](CHANGELOG.md) und [GitHub-Releases](https://github.com/TylonHH/dhl-packstation-availability/releases) erklären jede veröffentlichte Änderung. Für künftige Änderungen erstellt Release Please automatisch einen Release-Pull-Request mit neuer Version und Changelog. Nach Prüfung merged nur `@TylonHH` diesen Pull Request; dann erstellt die Automatisierung den Tag und das Release. Beiträge sind willkommen. Regeln für Pull Requests stehen in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Unterstützen
+
+Wenn dir die Integration gefällt, kannst du ein freiwilliges [Trinkgeld über PayPal](https://www.paypal.me/renew/) dalassen.
