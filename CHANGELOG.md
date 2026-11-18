@@ -2,6 +2,13 @@
 
 Änderungen erscheinen hier nach Version. Die GitHub-Releases enthalten dieselben Hinweise.
 
+## [0.2.2](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.2.1...v0.2.2) (2026-11-18)
+
+
+### Fehlerbehebungen
+
+* keep Packstation setup forms serializable ([#3](https://github.com/TylonHH/dhl-packstation-availability/issues/3)) ([32a68b4](https://github.com/TylonHH/dhl-packstation-availability/commit/32a68b431b9dc2de14c739297dcf365b8ce28874))
+
 ## [0.2.1](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.2.0...v0.2.1) (2026-11-14)
 
 
