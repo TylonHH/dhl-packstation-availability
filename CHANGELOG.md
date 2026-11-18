@@ -4,6 +4,22 @@
 
 ## [0.2.3](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.2.2...v0.2.3) (2026-11-18)
 
+### Dashboard-Beispiele mit Mushroom
+
+- **Horizontal:** Kompakte S/M/L/XL-Chips, die bei wenig Platz automatisch umbrechen.
+- **Vertikal:** Vier Kacheln in zwei Spalten; die Spaltenzahl lässt sich auf eine oder vier ändern.
+- Beide Varianten zeigen freie Fächer, Gesamtzahl, Adresse und den DHL-Datenstand. Unbekannte Werte bleiben von `0` unterscheidbar; nach 30 Minuten ohne neue Quelldaten erscheint eine Warnung.
+- Anleitung zum Einsetzen der eigenen Sensoren und Einfügen als manuelle Dashboard-Karte. Keine zusätzlichen Helfer, keine Layout Card und kein Card Mod erforderlich. Die Beispiele wurden mit Mushroom v5.2.3 geprüft.
+
+### Beispiele verwenden
+
+Mushroom über HACS installieren, die fünf Beispiel-Entitätsnamen durch die eigenen DHL-Sensoren ersetzen und die vollständige YAML-Datei als manuelle Karte einfügen:
+
+- [Horizontale Karte](https://github.com/TylonHH/dhl-packstation-availability/blob/v0.2.3/examples/mushroom/horizontal.yaml)
+- [Vertikale Karte](https://github.com/TylonHH/dhl-packstation-availability/blob/v0.2.3/examples/mushroom/vertical.yaml)
+- [Anleitung und Entitätszuordnung](https://github.com/TylonHH/dhl-packstation-availability/blob/v0.2.3/examples/mushroom/README.md)
+
+Die Karten werden nicht automatisch im Dashboard angelegt. Dieses Release ergänzt Beispiele und Dokumentation; die Abfrage der DHL-Daten und bestehende Entitäten bleiben unverändert. Historische Maximalwerte und eine Erkennung vermuteter Leerungen sind noch nicht enthalten.
 
 ### Dokumentation
 
