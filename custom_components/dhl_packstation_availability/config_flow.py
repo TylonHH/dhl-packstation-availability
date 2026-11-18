@@ -5,7 +5,13 @@ import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .api import PackstationError, build_station_id, fetch_station
+from .api import (
+    POSTAL_CODE_PATTERN,
+    STATION_NUMBER_PATTERN,
+    PackstationError,
+    build_station_id,
+    fetch_station,
+)
 from .const import DOMAIN
 
 
@@ -20,6 +26,11 @@ class PackstationConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             postal_code = user_input["postal_code"]
             station_number = user_input["station_number"]
+            if not POSTAL_CODE_PATTERN.fullmatch(postal_code):
+                errors["postal_code"] = "invalid_postal_code"
+            if not STATION_NUMBER_PATTERN.fullmatch(station_number):
+                errors["station_number"] = "invalid_station_number"
+        if user_input is not None and not errors:
             key = build_station_id(postal_code, station_number)
             try:
                 station = await fetch_station(async_get_clientsession(self.hass), key)
@@ -38,8 +49,8 @@ class PackstationConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema({
-                vol.Required("postal_code"): vol.All(str, vol.Match(r"^[0-9]{5}$")),
-                vol.Required("station_number"): vol.All(str, vol.Match(r"^[0-9]{3}$")),
+                vol.Required("postal_code", default=(user_input or {}).get("postal_code", "")): str,
+                vol.Required("station_number", default=(user_input or {}).get("station_number", "")): str,
             }),
             errors=errors,
         )
