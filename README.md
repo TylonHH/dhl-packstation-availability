@@ -53,6 +53,21 @@ value_template: "{{ states('sensor.parkdeck_freie_facher_xl') | int(0) > 0 }}"
 
 Für Benachrichtigungen kannst du in der Home-Assistant-Oberfläche einen **Numerischer Zustand**-Trigger auf den gewünschten Sensor setzen, Schwelle **über 0**.
 
+## Dashboard mit Mushroom
+
+Die Integration lässt sich mit den optionalen [Mushroom-Karten](https://github.com/piitaya/lovelace-mushroom) anzeigen. Zwei fertige YAML-Beispiele zeigen freie Fächer nach Größe, Gesamtzahl, Adresse und Alter der DHL-Daten:
+
+| Ansicht | Darstellung | Beispiel |
+| --- | --- | --- |
+| Horizontal | Kompakte S/M/L/XL-Chips, die bei wenig Platz in weitere Zeilen umbrechen | [horizontal.yaml](examples/mushroom/horizontal.yaml) |
+| Vertikal | Vier Kacheln in zwei Spalten, passend für eine schmale Dashboard-Spalte | [vertical.yaml](examples/mushroom/vertical.yaml) |
+
+Mushroom über HACS installieren und im Browser laden. Dann im gewünschten Beispiel die fünf Platzhalter-Entitätsnamen durch die eigenen Sensoren ersetzen. Den vollständigen YAML-Inhalt unter **Dashboard bearbeiten → Karte hinzufügen → Manuell** einfügen und die Vorschau prüfen. Die Beispiele wurden mit Mushroom **v5.2.3** getestet; die Home-Assistant-Voraussetzungen dieser Mushroom-Version gelten zusätzlich zur Integration.
+
+Es werden keine Helfer, keine Layout Card und kein Card Mod benötigt. `0` und unbekannte Werte sind unterscheidbar; nach 30 Minuten ohne neuen DHL-Quellzeitpunkt erscheint eine Warnung. Die Farben zeigen, ob freie Fächer vorhanden sind, keine prozentuale Auslastung. Ein Klick auf einen Wert öffnet dessen Detailansicht.
+
+[Anleitung, Platzhalter und Layout-Einstellungen](examples/mushroom/README.md). Die Karte wird beim Installieren oder Aktualisieren der Integration nicht automatisch dem Dashboard hinzugefügt.
+
 ## Grenzen
 
 Der verwendete Postfinder-Endpunkt ist keine dokumentierte öffentliche API. DHL kann Felder oder Zugriff jederzeit ändern. Nicht jede Packstation liefert Live-Fachzahlen. Werte können gegenüber der tatsächlichen Belegung verzögert sein. Bei HTTP-Fehlern oder fehlenden Daten werden Sensoren nicht als `0` ausgegeben. Diese Integration stammt nicht von DHL und ermöglicht weder Paketverfolgung noch Fachreservierung oder Öffnen einer Packstation.
