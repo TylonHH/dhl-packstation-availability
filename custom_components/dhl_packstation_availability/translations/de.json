@@ -7,7 +7,12 @@
         "data": {"postal_code": "Postleitzahl", "station_number": "Packstation-Nummer"}
       }
     },
-    "error": {"cannot_connect": "Live-Fachdaten konnten nicht gelesen werden. Postleitzahl und Packstation-Nummer prüfen.", "wrong_station": "DHL meldet eine andere Postleitzahl oder Packstation-Nummer."},
+    "error": {
+      "cannot_connect": "Live-Fachdaten konnten nicht gelesen werden. Postleitzahl und Packstation-Nummer prüfen.",
+      "wrong_station": "DHL meldet eine andere Postleitzahl oder Packstation-Nummer.",
+      "invalid_postal_code": "Genau fünf Ziffern (0–9) als Postleitzahl eingeben.",
+      "invalid_station_number": "Genau drei Ziffern (0–9) als Packstation-Nummer eingeben."
+    },
     "abort": {"already_configured": "Diese Packstation ist bereits eingerichtet."}
   },
   "entity": {

@@ -7,7 +7,12 @@
         "data": {"postal_code": "Postal code", "station_number": "Packstation number"}
       }
     },
-    "error": {"cannot_connect": "Could not read live compartment data. Check the postal code and Packstation number.", "wrong_station": "DHL returned a different postal code or Packstation number."},
+    "error": {
+      "cannot_connect": "Could not read live compartment data. Check the postal code and Packstation number.",
+      "wrong_station": "DHL returned a different postal code or Packstation number.",
+      "invalid_postal_code": "Enter exactly five digits (0–9) for the postal code.",
+      "invalid_station_number": "Enter exactly three digits (0–9) for the Packstation number."
+    },
     "abort": {"already_configured": "This Packstation is already configured."}
   },
   "entity": {
