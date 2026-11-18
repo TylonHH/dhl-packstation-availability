@@ -2,6 +2,13 @@
 
 Änderungen erscheinen hier nach Version. Die GitHub-Releases enthalten dieselben Hinweise.
 
+## [0.2.3](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.2.2...v0.2.3) (2026-11-18)
+
+
+### Dokumentation
+
+* add Mushroom dashboard examples ([#5](https://github.com/TylonHH/dhl-packstation-availability/issues/5)) ([ecc10ea](https://github.com/TylonHH/dhl-packstation-availability/commit/ecc10ea09350a8dad485ac7725243c62afc26545))
+
 ## [0.2.2](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.2.1...v0.2.2) (2026-11-18)
 
 
