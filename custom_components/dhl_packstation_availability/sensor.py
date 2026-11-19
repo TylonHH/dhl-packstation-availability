@@ -1,6 +1,6 @@
 """Free compartment count sensors."""
 
-from homeassistant.components.sensor import SensorEntity
+from homeassistant.components.sensor import SensorEntity, SensorStateClass
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -18,6 +18,8 @@ class PackstationSensor(CoordinatorEntity, SensorEntity):
 
     _attr_icon = "mdi:package-variant"
     _attr_has_entity_name = True
+    _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_suggested_display_precision = 0
 
     def __init__(self, coordinator, station_id, size):
         super().__init__(coordinator)
@@ -29,7 +31,7 @@ class PackstationSensor(CoordinatorEntity, SensorEntity):
             name=f"DHL Packstation {coordinator.data['name']}",
             manufacturer="DHL",
             model="Packstation",
-            configuration_url=f"https://www.dhl.de/int-postfinder/webservice/rest/v1/locationByPrimaryKeyPF/{station_id}",
+            configuration_url=f"https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html?primaryKeyPF={station_id}",
         )
 
     @property
