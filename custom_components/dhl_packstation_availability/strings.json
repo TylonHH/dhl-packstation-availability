@@ -2,18 +2,20 @@
   "config": {
     "step": {
       "user": {
-        "title": "Add DHL Packstation",
-        "description": "Shows available locker compartments by size (S, M, L, XL) and total. Updates every 15 minutes. Enter the station's five-digit postal code and three-digit Packstation number. Add the integration again for more stations. Leading zeros in postal codes are supported.",
-        "data": {"postal_code": "Postal code", "station_number": "Packstation number"}
+        "title": "Add DHL Packstation or DeinFach",
+        "description": "Shows available locker compartments by size (S, M, L, XL) and total. Updates every 15 minutes. Choose Packstation or DeinFach and enter the five-digit postal code and three-digit station number. Your personal DHL Postnumber is not used. Add the integration again for more stations. Leading zeros in postal codes are supported.",
+        "data": {"location_type": "Station type", "postal_code": "Postal code", "station_number": "Station number"}
       }
     },
     "error": {
-      "cannot_connect": "Could not read live compartment data. Check the postal code and Packstation number.",
-      "wrong_station": "DHL returned a different postal code or Packstation number.",
+      "cannot_connect": "Could not read live compartment data. Check the station type, postal code and station number.",
+      "not_found": "Station not found. Check the station type, postal code and station number.",
+      "wrong_station": "DHL returned a different postal code or station number.",
+      "invalid_location_type": "Choose Packstation or DeinFach.",
       "invalid_postal_code": "Enter exactly five digits (0–9) for the postal code.",
-      "invalid_station_number": "Enter exactly three digits (0–9) for the Packstation number."
+      "invalid_station_number": "Enter exactly three digits (0–9) for the station number."
     },
-    "abort": {"already_configured": "This Packstation is already configured."}
+    "abort": {"already_configured": "This station is already configured."}
   },
   "entity": {
     "sensor": {
