@@ -2,6 +2,13 @@
 
 Änderungen erscheinen hier nach Version. Die GitHub-Releases enthalten dieselben Hinweise.
 
+## [0.3.0](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.2.4...v0.3.0) (2026-11-21)
+
+
+### Neue Funktionen
+
+* support DHL DeinFach lockers ([#11](https://github.com/TylonHH/dhl-packstation-availability/issues/11)) ([8ded788](https://github.com/TylonHH/dhl-packstation-availability/commit/8ded788fe2a091af753a15f21747303dbe1b3cf6))
+
 ## [0.2.4](https://github.com/TylonHH/dhl-packstation-availability/compare/v0.2.3...v0.2.4) (2026-11-19)
 
 
