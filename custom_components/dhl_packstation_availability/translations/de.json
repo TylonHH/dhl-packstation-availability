@@ -2,18 +2,20 @@
   "config": {
     "step": {
       "user": {
-        "title": "DHL Packstation hinzufügen",
-        "description": "Zeigt freie Packstation-Fächer nach Größe (S, M, L, XL) und gesamt. Aktualisierung alle 15 Minuten. Fünfstellige Postleitzahl und dreistellige Packstation-Nummer eingeben. Für weitere Stationen die Integration erneut hinzufügen. Führende Nullen in Postleitzahlen werden unterstützt.",
-        "data": {"postal_code": "Postleitzahl", "station_number": "Packstation-Nummer"}
+        "title": "DHL Packstation oder DeinFach hinzufügen",
+        "description": "Zeigt freie Fächer nach Größe (S, M, L, XL) und gesamt. Aktualisierung alle 15 Minuten. Packstation oder DeinFach auswählen und die fünfstellige Postleitzahl und die dreistellige Stationsnummer eingeben. Die persönliche DHL-Postnummer wird nicht benötigt. Für weitere Stationen die Integration erneut hinzufügen. Führende Nullen in Postleitzahlen werden unterstützt.",
+        "data": {"location_type": "Stationstyp", "postal_code": "Postleitzahl", "station_number": "Stationsnummer"}
       }
     },
     "error": {
-      "cannot_connect": "Live-Fachdaten konnten nicht gelesen werden. Postleitzahl und Packstation-Nummer prüfen.",
-      "wrong_station": "DHL meldet eine andere Postleitzahl oder Packstation-Nummer.",
+      "cannot_connect": "Live-Fachdaten konnten nicht gelesen werden. Stationstyp, Postleitzahl und Stationsnummer prüfen.",
+      "not_found": "Station nicht gefunden. Stationstyp, Postleitzahl und Stationsnummer prüfen.",
+      "wrong_station": "DHL meldet eine andere Postleitzahl oder Stationsnummer.",
+      "invalid_location_type": "Packstation oder DeinFach auswählen.",
       "invalid_postal_code": "Genau fünf Ziffern (0–9) als Postleitzahl eingeben.",
-      "invalid_station_number": "Genau drei Ziffern (0–9) als Packstation-Nummer eingeben."
+      "invalid_station_number": "Genau drei Ziffern (0–9) als Stationsnummer eingeben."
     },
-    "abort": {"already_configured": "Diese Packstation ist bereits eingerichtet."}
+    "abort": {"already_configured": "Diese Station ist bereits eingerichtet."}
   },
   "entity": {
     "sensor": {

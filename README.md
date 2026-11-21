@@ -2,7 +2,7 @@
 
 ![Eigenständiges Symbol der Integration](custom_components/dhl_packstation_availability/brand/icon.png)
 
-Diese inoffizielle HACS-Integration zeigt freie Fächer einer DHL-Packstation nach Größe: S, M, L, XL und gesamt. Sie liest den DHL-Postfinder-Endpunkt ohne Anmeldung oder API-Schlüssel. Jede Station wird alle 15 Minuten abgefragt.
+Diese inoffizielle HACS-Integration zeigt freie Fächer von DHL-Packstationen und DeinFach-Automaten nach Größe (S, M, L, XL) und gesamt. Sie liest den DHL-Postfinder-Endpunkt ohne Anmeldung oder API-Schlüssel. Jede Station wird alle 15 Minuten abgefragt.
 
 Inspiriert von [flotomation](https://www.instagram.com/flotomation/) und [diesem Instagram-Reel](https://www.instagram.com/reel/DfpWwzBOrSv/).
 
@@ -14,14 +14,14 @@ In HACS zeigt die Repository-Seite diese Beschreibung und die folgenden Installa
 
 - Home Assistant 2024.6 oder neuer
 - Zugriff von Home Assistant auf `www.dhl.de`
-- Eine Packstation, für die DHL im Postfinder `liveStatus` mit Fachzahlen liefert
+- Eine Packstation oder ein DeinFach-Automat, für den DHL im Postfinder `liveStatus` mit Fachzahlen liefert
 - Für Installation über HACS: [HACS](https://www.hacs.xyz/docs/use/)
 
-## Postleitzahl und Packstation-Nummer finden
+## Stationstyp, Postleitzahl und Stationsnummer finden
 
-Öffne den [DHL Standortfinder](https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html) und wähle deine Packstation. Benötigt werden nur ihre fünfstellige Postleitzahl und ihre dreistellige Packstation-Nummer. Die persönliche DHL-Postnummer ist **nicht** gemeint.
+Öffne den [DHL Standortfinder](https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html) und wähle deine Station. Für die Einrichtung brauchst du den Stationstyp (Packstation oder DeinFach), die fünfstellige Postleitzahl und die dreistellige Stationsnummer. Die persönliche DHL-Postnummer ist **nicht** gemeint.
 
-Die Integration bildet daraus selbst den DHL-Endpunkt. Beispiel: Postleitzahl `23611` und Packstation `202` ergeben die Kennung `1-23611202`. Bei einer führenden Null wird nur die interne Kennung gekürzt: `01067` und Packstation `103` ergeben `1-1067103`. Im Einrichtungsdialog und bei der Prüfung der DHL-Antwort bleibt die Postleitzahl `01067` erhalten.
+Die Integration bildet daraus die Kennung für den DHL-Endpunkt. Packstation `202` in `23611` ergibt `1-23611202`, DeinFach `101` in `12345` ergibt `13-12345101`. Führende Nullen der Postleitzahl entfallen in der internen Kennung. Packstation `103` in `01067` ergibt damit `1-1067103`. Im Einrichtungsdialog und bei der Prüfung der DHL-Antwort bleibt die Postleitzahl `01067` erhalten.
 
 ## Installation
 
@@ -38,7 +38,7 @@ Ordner `custom_components/dhl_packstation_availability` nach `<config>/custom_co
 
 ## Einrichten
 
-In **Einstellungen → Geräte & Dienste → Integration hinzufügen** nach **DHL Packstation Availability** suchen. Postleitzahl und Packstation-Nummer eingeben. Für jede weitere Station die Integration erneut hinzufügen. Jede Station hat einen eigenen Endpunkt und fünf eigene Sensoren; dieselbe Station kann nur einmal eingerichtet werden. Bereits mit einer Postfinder-ID eingerichtete Stationen funktionieren nach dem Update weiter.
+In **Einstellungen → Geräte & Dienste → Integration hinzufügen** nach **DHL Packstation Availability** suchen. Stationstyp auswählen (Voreinstellung **Packstation**) und Postleitzahl sowie Stationsnummer eingeben. Für jede weitere Station die Integration erneut hinzufügen. Jede Station hat einen eigenen Endpunkt und fünf eigene Sensoren; dieselbe Station kann nur einmal eingerichtet werden. Bereits mit einer Postfinder-ID eingerichtete Stationen funktionieren nach dem Update weiter.
 
 ## Auslesen
 
@@ -74,7 +74,7 @@ Es werden keine Helfer, keine Layout Card und kein Card Mod benötigt. `0` und u
 
 ## Grenzen
 
-Der verwendete Postfinder-Endpunkt ist keine dokumentierte öffentliche API. DHL kann Felder oder Zugriff jederzeit ändern. Nicht jede Packstation liefert Live-Fachzahlen. Werte können gegenüber der tatsächlichen Belegung verzögert sein. Bei HTTP-Fehlern oder fehlenden Daten werden Sensoren nicht als `0` ausgegeben. Diese Integration stammt nicht von DHL und ermöglicht weder Paketverfolgung noch Fachreservierung oder Öffnen einer Packstation.
+Der verwendete Postfinder-Endpunkt ist keine dokumentierte öffentliche API. DHL kann Felder oder Zugriff jederzeit ändern. Live-Fachzahlen sind nur für einen Teil der Stationen verfügbar. Werte können gegenüber der tatsächlichen Belegung verzögert sein. Bei HTTP-Fehlern oder fehlenden Daten werden Sensoren nicht als `0` ausgegeben. Diese Integration stammt nicht von DHL und ermöglicht weder Paketverfolgung noch Fachreservierung oder Öffnen einer Packstation.
 
 Code: [MIT-Lizenz](LICENSE). DHL-Daten und Marken bleiben Eigentum ihrer jeweiligen Inhaber.
 

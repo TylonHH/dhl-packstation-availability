@@ -63,6 +63,16 @@ class SensorTest(unittest.TestCase):
                 self.assertEqual(sensor._attr_device_info["configuration_url"],
                                  "https://www.dhl.de/de/privatkunden/dhl-standorte-finden.html?primaryKeyPF=1-23611202")
 
+    def test_device_name_and_model_follow_the_station_type(self):
+        sensor = sensor_module.PackstationSensor(self.coordinator, "1-23611202", "total")
+        self.assertEqual(sensor._attr_device_info["name"], "DHL Packstation Example")
+        self.assertEqual(sensor._attr_device_info["model"], "Packstation")
+
+        self.coordinator.data.update(location_type="DEIN_FACH", name="DeinFach 101")
+        sensor = sensor_module.PackstationSensor(self.coordinator, "13-12345101", "total")
+        self.assertEqual(sensor._attr_device_info["name"], "DHL DeinFach 101")
+        self.assertEqual(sensor._attr_device_info["model"], "DeinFach")
+
     def test_each_station_has_its_own_public_link(self):
         for station_id in ("1-23611202", "1-1067103", "1-1067240"):
             with self.subTest(station_id=station_id):
